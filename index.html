@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taskiist</title>
+    <!-- Google FONTS lINKS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Handlee&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awsome Link -->
+    <link rel="stylesheet" href="./css/all.min.css" />
+    <!-- Bootstrap Css Link -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <!-- Main Css Link -->
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <!-- start of main sec -->
+    <main id="mainSec" class="min-vh-100 position-relative">
+      <div class="container-sm">
+        <div class="row flex-column flex-xl-row align-items-center row-gap-4">
+          <div class="col-xl-4">
+            <header class="mainContent text-center text-xl-start">
+              <h1 class="mainTitle mb-3">Taskivist To Do List</h1>
+              <p class="mainDesc fw-medium fs-3">
+                Organize and Remember your Tasks easily in One Place Only.
+              </p>
+            </header>
+          </div>
+          <div class="col-xl-7 offset-xl-1">
+            <div class="todoContainer shadow-lg py-4 p-3 p-md-4 rounded-3">
+              <h2 class="subTitle fs-3 text-center text-capitalize mb-4">
+                Add Your Tasks Here!
+              </h2>
+              <div class="currentDay row text-center">
+                <div class="col-md-6">
+                  <div class="dayParag">
+                    <p class="fs-5 text-dark fw-bolder mb-0">Today's Tasks</p>
+                    <p id="currentDay" class="fs-6 text-dark">Date</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="addTask">
+                    <button
+                      class="btn btn-outline-dark px-sm-4 py-sm-2 px-2 py-1 addTaskBtn w-100 fw-bold"
+                      id="addBtn"
+                    >
+                      <i class="fa-solid fa-plus"></i>
+                      <span>New Task</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- clear add btn -->
+              <button
+                class="btn btn-outline-danger fw-bold clearAllBtn w-100 d-block my-3"
+              >
+                <i class="fa-solid fa-trash me-2"></i>
+                <span>Clear All</span>
+              </button>
+
+              <div class="tasks">
+                <ul
+                  class="px-2 list-unstyled d-flex flex-column row-gap-3"
+                  id="listContainer"
+                ></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- start of modal box where user can enter task details -->
+      <div
+        class="taskBox position-fixed top-0 start-0 end-0 bottom-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center invisible opacity-0"
+        id="taskModal"
+      >
+        <div class="container-sm" id="container">
+          <div
+            class="taskDetails mx-auto bg-white shadow-lg py-4 px-2 px-md-4 rounded-2 position-relative"
+            id="taskDetails"
+          >
+            <button
+              class="btn btn-close d-block ms-auto"
+              id="closeBtn"
+            ></button>
+            <div
+              class="inputContainer mt-4 d-flex flex-column flex-md-row justify-content-between align-items-center gap-3"
+            >
+              <input
+                type="text"
+                id="taskName"
+                class="form-control addTaskInput border-2"
+                placeholder="Task Name..."
+                name="taskName"
+              />
+              <input
+                type="datetime-local"
+                id="taskDate"
+                name="taskDate"
+                class="form-control addTaskInput border-2"
+              />
+            </div>
+
+            <div class="submitBtn text-center position-absolute">
+              <button
+                class="btn btn-outline-dark px-sm-4 py-sm-2 w-100 px-2 py-1 w-50 addTaskBtn fw-semibold mb-1 d-block"
+                id="addTaskBtn"
+              >
+                <i class="fa-solid fa-plus me-2"></i>
+                <span>Add Task</span>
+              </button>
+              <button
+                class="btn btn-outline-dark px-sm-4 py-sm-2 w-100 px-2 py-1 w-50 addTaskBtn fw-semibold mb-1 d-none"
+                id="UpdateTaskBtn"
+              >
+                <i class="fa-solid fa-plus me-2"></i>
+                <span>Edit Task</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- start of modal box where user can enter task details -->
+
+      <!-- start of delete modal box -->
+      <div
+        class="deleteBox position-fixed top-0 start-0 bottom-0 end-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center invisible opacity-0"
+        id="deleteBox"
+      >
+        <div
+          class="deleteModal bg-white shadow-lg p-4 rounded-2"
+          id="deleteModal"
+        >
+          <button
+            class="btn btn-close ms-auto d-block mb-3"
+            id="closeDeleteModal"
+          ></button>
+          <p class="fs-5">Are You Sure You Want to Delete This?</p>
+          <div class="text-end">
+            <button class="btn btn-outline-dark btn-lg" id="yesDelete">
+              Yes
+            </button>
+            <button class="btn btn-outline-danger btn-lg" id="notDelete">
+              No
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- end of delete modal box -->
+
+      <!-- start of inputs validation warning modal -->
+      <div
+        class="validationBox position-fixed top-0 start-0 bottom-0 end-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center invisible opacity-0"
+        id="validationBox"
+      >
+        <div
+          class="validationModal p-4 bg-white shadow-lg rounded-2"
+          id="validationModal"
+        >
+          <button
+            class="btn btn-close ms-auto d-block mb-5"
+            id="closeValidationModal"
+          ></button>
+          <p class="fs-5 fw-semibold text-danger mb-5">
+            Task name is empty, please enter valid value!
+          </p>
+        </div>
+      </div>
+      <!-- end of inputs validation warning modal -->
+    </main>
+    <!-- end of main section -->
+
+    <!-- Bootstrap Js File -->
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <!-- Main Js File -->
+    <script src="./js/main.js"></script>
+  </body>
+</html>

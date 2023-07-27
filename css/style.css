@@ -1,0 +1,223 @@
+/* start of general styling */
+:root {
+  --lightPink: rgb(232, 174, 195);
+  --lightPuple: rgb(179, 132, 200);
+  --darkPurple: #703c64;
+  --pink: rgb(219, 161, 182);
+  --transparentDark: rgba(0, 0, 0, 0.8);
+  --purpleTransparent: rgb(217, 204, 224);
+}
+/* end of general styling */
+
+/* start of common styling */
+.taskBox,
+.deleteBox,
+.validationBox {
+  background-color: var(--transparentDark);
+  z-index: 999;
+  transition: opacity 300ms, visibility 300ms, background-color 500ms;
+}
+
+.taskDetails,
+.deleteModal,
+.validationModal {
+  transform: translateY(-150px);
+  transition: transform 500ms;
+}
+/* end of common styling */
+
+/* start of main section */
+#mainSec {
+  padding: 50px 0;
+  background-image: linear-gradient(
+    to left,
+    var(--lightPuple),
+    var(--lightPink)
+  );
+  background-repeat: no-repeat;
+  font-family: "Handlee", cursive !important;
+}
+
+.todoContainer {
+  min-height: 85vh;
+  background-color: rgb(243, 240, 243);
+}
+
+.mainTitle {
+  font-weight: 900;
+  font-size: calc(2rem + 1.2vw);
+}
+
+.addTaskInput {
+  border-color: var(--darkPurple);
+  transition: border-color 300ms;
+}
+
+.form-control:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: var(--pink);
+}
+
+.tasks {
+  padding: 25px 0;
+}
+
+.tasks ul {
+  list-style-position: inside;
+}
+
+.circle,
+.taskName,
+.taskDate,
+.taskInfo {
+  cursor: pointer;
+}
+
+.taskContent {
+  vertical-align: middle;
+  margin-top: -2px;
+}
+
+.taskDetails input::placeholder {
+  font-size: 14px;
+}
+
+.taskDetails input::placeholder,
+input[type="datetime-local"],
+.taskDetails input {
+  color: rgb(74, 81, 89) !important;
+}
+
+.taskDetails input {
+  font-size: 16px;
+}
+
+.addTaskBtn {
+  border-color: transparent !important;
+  background-color: var(--purpleTransparent) !important;
+  color: var(--darkPurple) !important;
+  transition: background-color 300ms, color 300ms;
+}
+
+.addTaskBtn:hover {
+  background-color: var(--darkPurple) !important;
+  color: white !important;
+}
+
+.submitBtn {
+  left: 24px;
+  right: 24px;
+  bottom: 30px;
+}
+
+.openTasks,
+.completedTasks {
+  color: var(--pink);
+}
+/* start of task controls */
+.completeBtn {
+  color: rgb(11, 142, 11) !important;
+}
+.completeBtn,
+.editBtn,
+.deleteBtn {
+  transition: opacity 200ms;
+}
+
+.completeBtn:hover,
+.editBtn:hover,
+.deleteBtn:hover {
+  opacity: 0.7;
+}
+
+.fa-ellipsis-vertical {
+  color: var(--pink);
+}
+
+.circle {
+  width: 35px;
+  height: 35px;
+  border: 2px solid var(--darkPurple);
+}
+
+.checkedIcon {
+  font-size: 23px;
+}
+
+.taskName {
+  color: var(--darkPurple);
+}
+
+.taskControls button {
+  min-width: 110px;
+}
+
+.controlsIcon {
+  cursor: pointer;
+}
+
+.taskBtns {
+  right: 20px;
+  top: 30%;
+  transition: opacity 300ms, visibility 300ms;
+  z-index: 15;
+}
+
+#dots {
+  appearance: none;
+}
+/* end of task controls */
+
+/* start of navs & tabs */
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: var(--darkPurple) !important;
+  color: white !important;
+}
+
+.nav-link {
+  color: var(--darkPurple) !important;
+}
+/* end of navs & tabs */
+
+/* start of task box styling */
+
+.btn-close:focus {
+  box-shadow: none;
+}
+
+.taskDetails {
+  min-height: 35vh;
+}
+
+/* end of task box styling */
+
+/* start of media query of main sec */
+@media screen and (min-width: 768px) {
+  .dayParag p:first-of-type {
+    font-size: 25px !important;
+  }
+  .dayParag p:nth-of-type(2) {
+    font-size: 20px !important;
+  }
+  .taskDetails input::placeholder {
+    font-size: 18px !important;
+  }
+  .taskDetails input {
+    font-size: 20px !important;
+  }
+  .taskInfo {
+    width: calc(75% - 20px);
+  }
+  .taskControls {
+    width: calc(25% - 20px);
+  }
+}
+@media screen and (min-width: 1200px) {
+  .taskDetails {
+    width: 70%;
+  }
+}
+/* end of media query of main sec */
+/* end of main section */
